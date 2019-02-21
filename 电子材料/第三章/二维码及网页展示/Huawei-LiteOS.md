@@ -48,7 +48,7 @@ Huawei-LiteOS的内核由四部分组成：软件开发工具包（SDK）、基�
 **②线程：**Huawei-LiteOS支持基于线程的编程，可以在线程之间进行通信和切换。线程是竞争系统资源的最小运行单元，线程可以使用或等待CPU、使用内存空间等系统资源，并独立于其它线程运行。在Huawei-LiteOS中，每个线程由线程ID、线程优先级、线程入口函数、线程控制块TCB、线程栈和线程上下文组成。每个线程都有多种运行状态：就绪态、运行态、阻塞态和退出态，这些状态之间的转换如图3-2所示：
 
 <div align=center>
-<img src=".\pics\pic1.png" width="50%">
+<img src=".\pics\pic2.png" width="50%">
 
 图3-2 线程状态迁移示意图
 </div>
@@ -159,7 +159,7 @@ Task_Hi is running		    //高优先级线程打断
 **(3)多网络协议栈的支持：**Huawei-LiteOS提供轻量级内核和连接引擎，支持大规模的网络协议，并允许各种类型的连接。如图3-3所示，Huawei-LiteOS支持的短距离网络协议包括BT、Wi-Fi、6LoWPAN、ZigBee等，支持的长距离网络协议包括LTE、NB-IoT等。
 
 <div align=center>
-<img src=".\pics\pic1.png" width="50%">
+<img src=".\pics\pic3.png" width="50%">
 
 图3-3 Huawei-LiteOS的网络协议栈
 </div>
