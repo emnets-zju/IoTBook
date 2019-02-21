@@ -138,7 +138,7 @@ LOS_TaskDelay 后，才将 CPU 释放出来。
 10 }
 ```
 
-<div align=center>代码3-3 低优先级线程</div>
+<center>代码3-3 低优先级线程</center>
 
 运行结果：低优先级线程在执行过程中会被高优先级线程打断。
 
@@ -154,7 +154,7 @@ Task_Low is running
 Task_Hi is running		    //高优先级线程打断
 ```
 
-<center>代码3-4 线程调度运行结果</center>
+<center>**代码3-4 线程调度运行结果**</center>
 
 **(3)多网络协议栈的支持：**Huawei-LiteOS提供轻量级内核和连接引擎，支持大规模的网络协议，并允许各种类型的连接。如图3-3所示，Huawei-LiteOS支持的短距离网络协议包括BT、Wi-Fi、6LoWPAN、ZigBee等，支持的长距离网络协议包括LTE、NB-IoT等。
 
