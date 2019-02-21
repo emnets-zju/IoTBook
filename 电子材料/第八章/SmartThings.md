@@ -88,7 +88,7 @@ SmartThings为物联网设备提供了三种与SmartThings云连接的方式：�
 
 
 <div align=center>
-<img src=".\pics\pic1.png" width="80%">
+<img src=".\pics\pic2.png" width="80%">
 
 图2 设备-SmartThings云连接的设备集成方案
 </div>
@@ -96,7 +96,7 @@ SmartThings为物联网设备提供了三种与SmartThings云连接的方式：�
 若要使用设备-SmartThings云连接的集成方案（如图2），设备开发者需要预先申请安全认证，如X.509证书或ED25519公钥（一种常用的椭圆曲线签名方案），并将其存放在设备中。如果申请的是X.509证书，开发者需要存放X.509 证书的通用唯一识别码UUID。如果是ED25519公钥，开发者可以用SmartThings提供的API将其转换为设备签名。设备开发者还需要提供符合SmartThings要求的设备接口，并向SmartThings云提供一个URL用以接收和发送设备上的数据和命令。设备需要支持CoAP协议以实现与SmartThings云的通讯。除此之外，设备开发者还需要自主提供与SmartThings app配对的方案。SmartThings支持设备通过SmartThings云直接进行配对。对于成熟的第三方设备设计厂商，SmartThings还提供了基于遥控按钮和设备按钮的配对方案。用户可以通过厂商额外提供的遥控按钮或嵌入设备的匹配按钮，实现同一WiFi网络中的物联网设备和SmartThings app的配对。
 
 <div align=center>
-<img src=".\pics\pic1.png" width="80%">
+<img src=".\pics\pic3.png" width="80%">
 
 图3 设备-第三方云-SmartThings云连接的设备集成方案
 </div>
@@ -104,7 +104,7 @@ SmartThings为物联网设备提供了三种与SmartThings云连接的方式：�
 若要使用设备-第三方云-SmartThings云连接的集成方案（如图3），设备开发者需要自己实现一个连接器（Connector）服务完成云-云之间的通信和命令的解析，使设备能间接地与SmartThings云通信。下面用LIFX智能灯作为例子简单说明设备-第三方云- SmartThings云连接集成的工作流程：1.终端用户在app中点击打开LIFX智能灯的按钮。2. SmartThings云接收此开灯事件，生成携带第三方OAuth访问令牌的命令[11]，并发送到连接器服务。3. 连接器服务解析此命令，生成设备支持的&quot;on&quot;命令并将其传输到第三方的LIFX云。4. LIFX云发送&quot;on&quot;命令到LIFX智能灯将其开启。5. 智能灯的状态通过连接器返回SmartThings云，用户的SmartThings app界面得到更新，显示灯已打开。
 
 <div align=center>
-<img src=".\pics\pic1.png" width="80%">
+<img src=".\pics\pic4.png" width="80%">
 
 图4 设备-控制中心- SmartThings云连接的设备集成方案
 </div>
@@ -121,7 +121,7 @@ SmartThings平台要求服务开发者在服务中实现各个生命周期阶段
 
 
 <div align=center>
-<img src=".\pics\pic1.png" width="80%">
+<img src=".\pics\pic5.png" width="80%">
 
 图5 服务的生命周期工作流程
 </div>
@@ -154,6 +154,7 @@ SmartThings支持两种类型的调度：一次调度和周期性调度。一次
 - 15 10 ? \* 6#3：每月的第三个星期五上午10:15
 - 15 10 15W \* ?：离每月15日最近的工作日的上午10:15
 - 15 10 LW \* ?：每月最后一个工作日的上午10:15
+
 
 <div style="text-align:center">
 <table style="margin:auto">
@@ -208,7 +209,7 @@ SmartThings为不断增长的物联网设备提供了一套中央控制方案。
 
 
 <div align=center>
-<img src=".\pics\pic1.png" width="80%">
+<img src=".\pics\pic6.png" width="80%">
 
 图6 SmartThings插件平台的软件框架
 </div>
@@ -216,7 +217,7 @@ SmartThings为不断增长的物联网设备提供了一套中央控制方案。
 SmartThings app是用户管理和控制物联网设备的直接途径。基于插件的移动应用工作流程如图8-7所示：
 
 <div align=center>
-<img src=".\pics\pic1.png" width="80%">
+<img src=".\pics\pic7.png" width="80%">
 
 图7 基于插件的移动应用工作流程
 </div>
@@ -226,14 +227,3 @@ SmartThings app是用户管理和控制物联网设备的直接途径。基于�
 - **步骤3：** SmartThings app下载插件。如果SmartThings app检测到该物联网设备对应的插件还没有预加载或预装，那么它就会从云端的插件商店下载对应插件。
 - **步骤4：** 用户控制设备。当插件安装好后，用户可以监视该物联网设备的状态，并可以通过插件向设备发送控制命令。
 - **步骤5：** 设备响应命令。在物联网设备上都应有一个应用程序（设备开发者提供）用以处理来自插件的用户命令，并返回状态通知。
-
-
-<center>
-
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
-
-</center>
