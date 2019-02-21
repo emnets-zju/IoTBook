@@ -21,8 +21,7 @@ Huawei-LiteOS的内核由四部分组成：软件开发工具包（SDK）、基�
 图3-1 Huawei-LiteOS的内核示意图
 </div>
 
-其中，端云解决方案支持华为的IoT联接管理平台OceanConnect。OceanConnect
-是华为在“1+2+1”的物联网战略中提出的，基于物联网、云计算和大数据等技术打造的开放生态环境[2]。
+其中，端云解决方案支持华为的IoT联接管理平台OceanConnect。OceanConnect是华为在“1+2+1”的物联网战略中提出的，基于物联网、云计算和大数据等技术打造的开放生态环境[2]。
 
 **硬件支持列表：**Huawei-LiteOSLiteOS目前已经适配了30多种开发板，其中包括ST、NXP、GD、MIDMOTION、SILICON、ATMEL等主流厂商的开发板。表3-1列举了几款Huawei-LiteOS支持的开发板：
 
