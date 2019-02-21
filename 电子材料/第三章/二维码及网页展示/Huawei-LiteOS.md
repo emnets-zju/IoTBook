@@ -26,7 +26,7 @@ Huawei-LiteOS的内核由四部分组成：软件开发工具包（SDK）、基�
 
 **硬件支持列表：**Huawei-LiteOSLiteOS目前已经适配了30多种开发板，其中包括ST、NXP、GD、MIDMOTION、SILICON、ATMEL等主流厂商的开发板。表3-1列举了几款Huawei-LiteOS支持的开发板：
 
-<center>表3-1 部分Huawei-LiteOS支持的开发板</center>
+<div align=center>表3-1 部分Huawei-LiteOS支持的开发板</div>
 
 | **厂商**              | **开发板**          | **MCU**          | **射频芯片** | **传感模块**                       |
 | --------------------- | ------------------- | ---------------- | ------------ | ---------------------------------- |
