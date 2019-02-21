@@ -85,7 +85,7 @@ LOS_TaskDelay 后，才将 CPU 释放出来。
 6      stInitParam.pfnTaskEntry = Example_TaskHi;
 7      stInitParam.usTaskPrio = TASK_PRIO_HI;
 8      stInitParam.pcName = "TaskHi";
-9     stInitParam.uwStackSize = TASK_STK_SIZE;
+9      stInitParam.uwStackSize = TASK_STK_SIZE;
 10     stInitParam.uwArg = (UINT32)pcTextForTaskHi;
 11     uwRet = LOS_TaskCreate(&s_uwTskHiID, &stInitParam);
 12     if (uwRet != LOS_OK) {
@@ -164,19 +164,19 @@ Task_Hi is running		    //高优先级线程打断
 图3-3 Huawei-LiteOS的网络协议栈
 </div>
 
-**①BT协议：**BT是BitTorrent的简称，中文全称“比特流”，是互联网上最热门的一种P2P传输协议。
+①BT协议：BT是BitTorrent的简称，中文全称“比特流”，是互联网上最热门的一种P2P传输协议。
 
-**②Wi-Fi协议：**Wi-Fi是一种无线局域网技术，使用的频段是2.4G UHF和5G SHF
+②Wi-Fi协议：Wi-Fi是一种无线局域网技术，使用的频段是2.4G UHF和5G SHF
 ISM，以微波、激光、红外等无线载波作为传输介质，主要用于解决局域网中终端设备的无线接入。
 
-**③6LoWPAN协议：**6LoWPAN是一种基于IPv6的短距离、低速率、低功耗的无线个域网协议。**Huawei-LiteOS使用6LoWPAN对BT和802.15.4协议进行了封装，使得BLE、802.15.4、Wi-Fi协议在IP层可以互通。**
+③6LoWPAN协议：6LoWPAN是一种基于IPv6的短距离、低速率、低功耗的无线个域网协议。**Huawei-LiteOS使用6LoWPAN对BT和802.15.4协议进行了封装，使得BLE、802.15.4、Wi-Fi协议在IP层可以互通。**
 
-**④ZigBee协议：**ZigBee是短距离、低功耗的局域网协议，它是基于IEEE
+④ZigBee协议：ZigBee是短距离、低功耗的局域网协议，它是基于IEEE
 802.15.4标准的，使用的频段是2.4GHz，基本传输速率是250kb/s。
 
-**⑤LTE协议：**LTE是移动设备和数据终端之间高速无线通信的协议。
+⑤LTE协议：LTE是移动设备和数据终端之间高速无线通信的协议。
 
-**⑥NB-IoT协议：**NB-IoT是基于蜂窝的低功率广域网协议，用于实现各种蜂窝设备和服务，只占用约180kHz的带宽。
+⑥NB-IoT协议：NB-IoT是基于蜂窝的低功率广域网协议，用于实现各种蜂窝设备和服务，只占用约180kHz的带宽。
 
 Huawei-LiteOS的网络协议栈更加注重于**遵循现有的标准**和**重用开源组件**，实现了不同网络协议之间的互通。
 
