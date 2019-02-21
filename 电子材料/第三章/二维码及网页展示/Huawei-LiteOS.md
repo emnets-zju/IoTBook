@@ -104,7 +104,7 @@ LOS_TaskDelay 后，才将 CPU 释放出来。
 25         return LOS_NOK;
 26     }
 27     return uwRet;
-28	}
+28 }
 ```
 
 <div align=center>代码3-1 LOS_TaskCreate入口函数</div>
