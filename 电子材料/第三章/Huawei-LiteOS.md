@@ -48,7 +48,7 @@ Huawei-LiteOS的内核由四部分组成：软件开发工具包（SDK）、基�
 **②线程：**Huawei-LiteOS支持基于线程的编程，可以在线程之间进行通信和切换。线程是竞争系统资源的最小运行单元，线程可以使用或等待CPU、使用内存空间等系统资源，并独立于其它线程运行。在Huawei-LiteOS中，每个线程由线程ID、线程优先级、线程入口函数、线程控制块TCB、线程栈和线程上下文组成。每个线程都有多种运行状态：就绪态、运行态、阻塞态和退出态，这些状态之间的转换如图3-2所示：
 
 <div align=center>
-<img src=".\pics\pic1.png" width="50%">
+<img src=".\pics\pic2.png" width="50%">
 
 图3-2 线程状态迁移示意图
 </div>
@@ -76,7 +76,7 @@ LOS_TaskDelay 后，才将 CPU 释放出来。
 
 创建Example05_Entry入口函数，在Example05_Entry中先创建优先级为5的高优先级线程，然后创建优先级为4的低优先级线程。
 
-```
+``` c++
 1  T32 Example05_Entry(VOID) {
 2      UINT32 uwRet = LOS_OK;
 3      TSK_INIT_PARAM_S stInitParam = {0};
@@ -85,7 +85,7 @@ LOS_TaskDelay 后，才将 CPU 释放出来。
 6      stInitParam.pfnTaskEntry = Example_TaskHi;
 7      stInitParam.usTaskPrio = TASK_PRIO_HI;
 8      stInitParam.pcName = "TaskHi";
-9     stInitParam.uwStackSize = TASK_STK_SIZE;
+9      stInitParam.uwStackSize = TASK_STK_SIZE;
 10     stInitParam.uwArg = (UINT32)pcTextForTaskHi;
 11     uwRet = LOS_TaskCreate(&s_uwTskHiID, &stInitParam);
 12     if (uwRet != LOS_OK) {
@@ -104,14 +104,17 @@ LOS_TaskDelay 后，才将 CPU 释放出来。
 25         return LOS_NOK;
 26     }
 27     return uwRet;
-28	}
+28 }
 ```
 
-<center>代码3-1 LOS_TaskCreate入口函数</center>
+<div align=center>
+
+代码3-1 LOS_TaskCreate入口函数
+</div>
 
 高优先级线程打印回显信息：
 
-```
+``` c++
 1  //高优先级线程
 2  static VOID * Example_TaskHi(UINT32 uwArg) {
 3      for (;;) {
@@ -121,11 +124,14 @@ LOS_TaskDelay 后，才将 CPU 释放出来。
 7  }
 ```
 
-<center>代码3-2 高优先级线程</center>
+<div align=center>
+
+代码3-2 高优先级线程
+</div>
 
 低优先级线程打印回显信息：
 
-```
+``` c++
 1  //低优先级线程
 2  static VOID * Example_TaskLo(UINT32 uwArg) {
 3      UINT32 i;
@@ -138,7 +144,10 @@ LOS_TaskDelay 后，才将 CPU 释放出来。
 10 }
 ```
 
-<center>代码3-3 低优先级线程</center>
+<div align=center>
+
+代码3-3 低优先级线程
+</div>
 
 运行结果：低优先级线程在执行过程中会被高优先级线程打断。
 
@@ -154,12 +163,15 @@ Task_Low is running
 Task_Hi is running		    //高优先级线程打断
 ```
 
-<center>代码3-4 线程调度运行结果</center>
+<div align=center>
+
+代码3-4 线程调度运行结果
+</div>
 
 **(3)多网络协议栈的支持：**Huawei-LiteOS提供轻量级内核和连接引擎，支持大规模的网络协议，并允许各种类型的连接。如图3-3所示，Huawei-LiteOS支持的短距离网络协议包括BT、Wi-Fi、6LoWPAN、ZigBee等，支持的长距离网络协议包括LTE、NB-IoT等。
 
 <div align=center>
-<img src=".\pics\pic1.png" width="50%">
+<img src=".\pics\pic3.png" width="50%">
 
 图3-3 Huawei-LiteOS的网络协议栈
 </div>
