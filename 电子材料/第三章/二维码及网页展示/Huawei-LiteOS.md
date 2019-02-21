@@ -138,7 +138,7 @@ LOS_TaskDelay 后，才将 CPU 释放出来。
 10 }
 ```
 
-<center>代码3-3 低优先级线程</center>
+<div align=center>代码3-3 低优先级线程</div>
 
 运行结果：低优先级线程在执行过程中会被高优先级线程打断。
 
