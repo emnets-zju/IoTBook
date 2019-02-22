@@ -1,4 +1,4 @@
-### 下行参考信号NRS
+# NB-IoT物理下行控制信道NPDCCH
 
 在NB-IoT中，NPDCCH有三种类型：第一种是Type1-NPDCCH，UE通过检测该信道获取上行调度信息；第二种是Type2-NPDCCH，UE通过检测该信道获取下行调度信息及随机接入响应消息（RAR, Random Access Response）；第三种是Type3-NPDCCH，UE通过检测该信道获取专属控制信息（如寻呼消息）。表 6-6总结了三种类型的NPDCCH信息，对应于三种格式的DCI。
 
