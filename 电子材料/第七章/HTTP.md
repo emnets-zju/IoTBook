@@ -30,7 +30,7 @@ Content-Disposition: form-data; name="upload"; filename="test.cpp"
 图2 HTTP请求报文示例
 </div>
 
-
+<br/>
 
 <div align=center>
 表1 部分HTTP请求方法
@@ -72,6 +72,7 @@ Connection:Keep-Alive \r\n
 图4 HTTP应答报文示例
 </div>
 
+<br/>
 
 <div align=center>
 表2 HTTP请求返回状态码
