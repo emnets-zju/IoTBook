@@ -30,15 +30,18 @@ Content-Disposition: form-data; name="upload"; filename="test.cpp"
 图2 HTTP请求报文示例
 </div>
 
+
+
 <div align=center>
 表1 部分HTTP请求方法
-</div>
 
 | 请求方法 | 含义                                               |
 |----------|----------------------------------------------------|
 | GET      | 读取一个Web页面                                    |
 | POST     | 当提交表单时需要用到POST，需要上传附加数据到服务器 |
 | DELETE   | 请求服务器删除指定的页面                           |
+</div>
+
 
 ## 2. 应答报文格式
 
@@ -69,9 +72,9 @@ Connection:Keep-Alive \r\n
 图4 HTTP应答报文示例
 </div>
 
+
 <div align=center>
 表2 HTTP请求返回状态码
-</div>
 
 | 状态码 | 含义                                               |
 |----------|----------------------------------------------------|
@@ -80,3 +83,4 @@ Connection:Keep-Alive \r\n
 | 3xx   | 重定向，浏览器如要完成请求还需进一步行动                          |
 | 4xx   | 浏览器请求错误，例如页面不存在或请求语法不正确                          |
 | 5xx   | 服务器差错，服务器失效                          |
+</div>
