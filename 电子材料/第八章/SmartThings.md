@@ -101,7 +101,7 @@ SmartThings为物联网设备提供了三种与SmartThings云连接的方式：�
 图3 设备-第三方云-SmartThings云连接的设备集成方案
 </div>
 
-若要使用设备-第三方云-SmartThings云连接的集成方案（如图3），设备开发者需要自己实现一个连接器（Connector）服务完成云-云之间的通信和命令的解析，使设备能间接地与SmartThings云通信。下面用LIFX智能灯作为例子简单说明设备-第三方云- SmartThings云连接集成的工作流程：1.终端用户在app中点击打开LIFX智能灯的按钮。2. SmartThings云接收此开灯事件，生成携带第三方OAuth访问令牌的命令[11]，并发送到连接器服务。3. 连接器服务解析此命令，生成设备支持的&quot;on&quot;命令并将其传输到第三方的LIFX云。4. LIFX云发送&quot;on&quot;命令到LIFX智能灯将其开启。5. 智能灯的状态通过连接器返回SmartThings云，用户的SmartThings app界面得到更新，显示灯已打开。
+若要使用设备-第三方云-SmartThings云连接的集成方案（如图3），设备开发者需要自己实现一个连接器（Connector）服务完成云-云之间的通信和命令的解析，使设备能间接地与SmartThings云通信。下面用LIFX智能灯作为例子简单说明设备-第三方云- SmartThings云连接集成的工作流程：1.终端用户在app中点击打开LIFX智能灯的按钮。2. SmartThings云接收此开灯事件，生成携带第三方OAuth访问令牌的命令，并发送到连接器服务。3. 连接器服务解析此命令，生成设备支持的&quot;on&quot;命令并将其传输到第三方的LIFX云。4. LIFX云发送&quot;on&quot;命令到LIFX智能灯将其开启。5. 智能灯的状态通过连接器返回SmartThings云，用户的SmartThings app界面得到更新，显示灯已打开。
 
 <div align=center>
 <img src=".\pics\pic4.png" width="80%">
@@ -117,7 +117,7 @@ SmartThings为物联网设备提供了三种与SmartThings云连接的方式：�
 
 **①服务生命周期**
 
-SmartThings平台要求服务开发者在服务中实现各个生命周期阶段（Lifecycle Phase）请求的处理程序。当服务被注册到SmartThings平台后，便会开始它的生命周期直至此服务被卸载。服务的生命周期需要包括7个生命周期阶段：PING（服务存在访问请求），CONFIGURATION（服务相关配置信息请求），INSTALL（服务安装请求），UPDATE（服务更新请求），EVENT（服务响应触发事件请求），OAUTH\_CALLBACK（服务访问第三方云请求），UNINSTALL（服务卸载请求）。服务在各个生命周期阶段均会被SmartThings云调用。反之，服务也可以调用SmartThings 平台的RESTful API发送和接收数据或命令[11]。SmartThings平台在服务的每个生命周期阶段向其发送一个POST请求，请求主体会包含某一生命周期阶段标识和依赖于此生命周期阶段的相关数据。服务要求能够解析并响应此请求。服务响应使用传统HTTP响应代码：2XX表示成功，4XX表示请求的输入错误，5XX表示SmartThings平台上的故障。服务的生命周期工作流程及每个生命周期阶段内SmartThings平台的请求内容如图5所示。
+SmartThings平台要求服务开发者在服务中实现各个生命周期阶段（Lifecycle Phase）请求的处理程序。当服务被注册到SmartThings平台后，便会开始它的生命周期直至此服务被卸载。服务的生命周期需要包括7个生命周期阶段：PING（服务存在访问请求），CONFIGURATION（服务相关配置信息请求），INSTALL（服务安装请求），UPDATE（服务更新请求），EVENT（服务响应触发事件请求），OAUTH\_CALLBACK（服务访问第三方云请求），UNINSTALL（服务卸载请求）。服务在各个生命周期阶段均会被SmartThings云调用。反之，服务也可以调用SmartThings 平台的RESTful API发送和接收数据或命令。SmartThings平台在服务的每个生命周期阶段向其发送一个POST请求，请求主体会包含某一生命周期阶段标识和依赖于此生命周期阶段的相关数据。服务要求能够解析并响应此请求。服务响应使用传统HTTP响应代码：2XX表示成功，4XX表示请求的输入错误，5XX表示SmartThings平台上的故障。服务的生命周期工作流程及每个生命周期阶段内SmartThings平台的请求内容如图5所示。
 
 
 <div align=center>
