@@ -1,4 +1,4 @@
-#include "DHT.h“
+#include "DHT.h"
 DHT dht(2, DHT11);                   // DHT11的数据引脚连接开发板2号引脚
 void setup() {                       // 程序初始化代码，执行一次
   Serial.begin(9600);                // 串口打印波特率为9600 Bd/s
