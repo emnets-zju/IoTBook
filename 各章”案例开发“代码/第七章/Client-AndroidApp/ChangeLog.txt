@@ -1,0 +1,128 @@
+2017.10.11 Version 2.0.0
+ * Added support for taking a snapshot of a share.
+ * IOExceptions wrapping StorageExceptions will now contain the StorageException message in the outer exception.
+ * Connection string support expanded to allow AccountName to be specified with SharedAccessSignature and DefaultEndpointsProtocol.  In this case, SharedAccessSignature is used for credentials, while having both DefaultEndpointsProtocol and AccountName allows the library to infer a set of default endpoints.  Additionally, we have added support for BlobSecondaryEndpoint, QueueSecondaryEndpoint, TableSecondaryEndpoint, and FileSecondaryEndpoint.  Specifying a secondary endpoint requires the specification of the corresponding primary.
+ * The use of DefaultEndpointsProtocol in a connection string is now optional in the case where endpoints would be automatically generated; if missing, a value of https will be inferred.  When the parsed account settings in such a case are used to generate a connection string, the value of DefaultEndpointsProtocol will be explicitly included.
+
+2017.08.30 Version 1.2.0
+ * Fixed a bug when using a SAS token where the token was being omitted from calls to delete a directory in the file service.
+ * For Standard Storage Accounts only, added the ability to set the tier of individual block blobs. The tier can currently only be set through uploadTier().
+
+2017.07.31 Version 1.1.0
+ * Support for 2017-04-17 REST version. Please see our REST API documentation and blogs for information about the related added features.
+ * For Premium Accounts only, added support for getting and setting the tier on a page blob. The tier can also be set when creating or copying from an existing page blob.
+ * Fixed a bug where the transactional MD5 check would fail when downloading a range of blob or file and the recovery action is performed on a subsection of the range.
+ * Added support for server side encryption for File Service.
+ * Fixed a bug that prevented setting content MD5 to true when creating a new file.
+ * Fixed a bug where access conditions, options, and operation context were not being passed when calling openWriteExisting() on a page blob or a file.
+ * Fixed a bug where an exception was being thrown on a range get of a blob or file when the options disableContentMD5Validation is set to false and useTransactionalContentMD5 is set to true and there is no overall MD5.
+ * Fixed a bug where retries were happening immediately if a sock exception was thrown.
+
+2017.01.30 Version 1.0.0
+ * Android Studio support via Gradle build system.
+ * Updated tests from JUnit 3 to Android Junit 4.
+ * Prefix support for listing files and directories.
+ * Added support for setting public access when creating a blob container
+ * The public access setting on a blob container is now a container property returned from downloadProperties.
+ * Add Message now modifies the PopReceipt, Id, NextVisibleTime, InsertionTime, and ExpirationTime properties of its CloudQueueMessage parameter.
+ * Populate content MD5 for range gets on Blobs and Files.
+ * Added support in Page Blob for incremental copy.
+ * getQualifiedUri() has been deprecated for Blobs. Please use getSnapshotQualifiedUri() instead. This new function will return the blob including the snapshot (if present) and no SAS token.
+ * getQualifiedStorageUri() has been deprecated for Blobs. Please use getSnapshotQualifiedStorageUri() instead. This new function will return the blob including the snapshot (if present) and no SAS token.
+ * Fixed a bug where copying from a blob that included a SAS token and a snapshot ommitted the SAS token.
+
+2016.07.14 Version 0.8.0
+ * Added support for server-side encryption.
+ * Fixed a bug in the retry policies where 300 status codes were being retried when they shouldn't be.
+ * Added support for getBlobReferenceFromServer methods on CloudBlobContainer to support retrieving a blob without knowing its type.
+ * Added support for setting a library-wide proxy. The default proxy can be set on OperationContext.
+ * Added support in Page Blob for getting a list of differing page ranges between snapshot versions.
+ * Added support in Page Blob for getting ranges of pages.
+ * Removed deprecated table AtomPub support.
+
+2015.10.05 Version 0.7.0
+ * Fixed a bug in table where a select on a non-existent field resulted in a null reference exception if the corresponding field in the TableEntity was not nullable.
+ * Fixed a bug in table where JsonParser was automatically closing the response stream before it was completely drained causing socket exhaustion.
+ * Fixed a bug in StorageCredentialsAccountAndKey.updateKey(String) which prevented valid keys from being set.
+ * Added CloudBlobContainer.listBlobs(final String, final boolean) method.
+ * Fixed a bug in blob where using AccessConditions on block blob uploads larger than 64MB done with the upload* methods or block blob uploads done openOutputStream with would fail if the blob did not already exist.
+ * Added support for setting a proxy per request. Proxy can be set on an OperationContext instance and will be used when that instance is passed to the request method.
+ * Removed deprecated constructors which take service clients in favor of constructors which take credentials.
+ * Added support for "Add" permissions on Blob SAS.
+ * Added support for "Create" permissions on Blob and File SAS.
+ * Added support for IP Restricted SAS and Protocol SAS.
+ * Added support for Account SAS to all services.
+ * Added support for Minute and Hour Metrics to FileServiceProperties and added support for File Metrics to CloudAnalyticsClient.
+ * Removed deprecated startCopyFromBlob() on CloudBlob. Use startCopy() instead.
+ * Removed deprecated Credentials and StorageKey classes. Please use the appropriate methods on StorageCredentialsAccountAndKey instead.
+
+2015.08.15 Version 0.6.0
+ * Added support for SAS to the Azure File service.
+ * Added support for Append Blob.
+ * Added support for Access Control Lists (ACL) to File Shares.
+ * Added support for getting and setting of CORS rules to File service.
+ * Added support for ShareStats to File Shares.
+ * Added support for copying an Azure File to another Azure File or a Block Blob asynchronously, and aborting Azure File copy operations asynchronously.
+ * Added support for copying a Blob to an Azure File asynchronously.
+ * Added support for setting a maximum quota property on a File Share.
+ * Removed deprecated AuthenticationScheme and its getter and setter. In the future only SharedKey will be used.
+ * Removed deprecated getter/setters for all request option properties on the service clients. Please use the default request options getter/setters instead.
+ * Removed getSubDirectoryReference() for blob directories and file directories. Use getDirectoryReference() instead. 
+ * Removed getEntityClass() in TableQuery. Please use getClazzType() instead.
+ * Added client-side verification for lease duration and break periods.
+ * Deprecated the setters in table for timestamp as this property is only modifiable by the service.
+ * Deprecated startCopyFromBlob() on CloudBlob. Use startCopy() instead.
+ * Deprecated the Credentials and StorageKey classes. Please use the appropriate methods on StorageCredentialsAccountAndKey instead.
+ * Deprecated constructors which take service clients in favor of constructors which take credentials.
+ * Fixed a bug where the DateBackwardCompatibility flag was not applied if set on the CloudTableClient default request options.
+ * Changed library behavior to retry all exceptions thrown when parsing a response object.
+ * Changed behavior to stop removing query parameters passed in with the resource URI if that URI contains a SAS token. Some query parameters such as comp, restype, snapshot and api-version will still be removed.
+ * Added support for logging StringToSign to SharedKey and SAS.
+ * Added a connect timeout to prevent hangs when establishing the network connection.
+ * Made performance enhancements to the BlobOutputStream class.
+
+2015.05.26 Version 0.5.1
+ * Fixed a bug where maximum execution time was ignored for file, queue, and table services.
+ * Changed the socket timeout to be set to the service side timeout plus 5 minutes when maximum execution time is not set.
+ * Changed the socket timeout to default to 5 minutes rather than infinite when neither service side timeout or maximum execution time are set.
+ * Fixed a bug where MD5 was calculated for commitBlockList even though UseTransactionalMD5 was set to false.
+ * Fixed a bug where selecting fields that did not exist returned an error rather than an EntityProperty with a null value.
+ * Fixed a bug where table entities with a single quote in their partition or row key could be inserted but not operated on in any other way.
+
+2015.04.02 Version 0.5.0
+ * Fixed a bug for all listing API's where next() would sometimes throw an exception if hasNext() had not been called even if there were more elements to iterate on.
+ * Added sequence number to the blob properties. This is populated for page blobs.
+ * Creating a page blob sets its length property.
+ * Added support for page blob sequence numbers and sequence number access conditions. 
+ * Fixed a bug in abort copy where the lease access condition was not sent to the service.
+ * Fixed an issue in startCopyFromBlob where if the URI of the source blob contained certain non-ASCII characters they would not be encoded appropriately. This would result in Authorization failures.
+ * Fixed a bug in BlobOutputStream and FileOutputStream where flush added data to a request pool rather than immediately committing it to the Azure service.
+ * Refactored to remove the blob, queue, and file package dependency on table in the error handling code.
+ * Added additional client-side logging for REST requests, responses, and errors.
+
+2015.01 Version 0.4.1
+ * Fixed a bug for Android 5.0 only that caused auth failures on deletes.
+
+2014.12 Version 0.4.0
+ * Deprecated getSubDirectoryReference() for blob directories and file directories. Use getDirectoryReference() instead. 
+ * Fixed a bug where maxResults was not verified to be positive for list operations.
+ * Deprecated AuthenticationScheme and its getter and setter. In the future only SharedKey will be used.
+ * Added support for EndpointSuffix which was previously not accepted in Account Strings.
+ * Fixed a bug where high precision Date values stored on Table Entites were forced to fit into milliseconds resulting in inaccuracies. Precision is limited to 1 millisecond by the Android Date class. If greater precision is required, the String should be used directly.
+ * Added TableRequestOptions.dateBackwardCompatibility, which supports reading Date values on Table Entities written using versions of this library prior to 0.4.0. See http://go.microsoft.com/fwlink/?LinkId=523753 for more details.
+
+2014.10 Version 0.3.1
+ * Fixed a bug where a NullPointerException was thrown instead of a NetworkOnMainThreadException if code was executed on the main thread.
+
+2014.08 Version 0.3.0
+ * Added the NameValidator class which contains helpers that check to see if resource names are valid.
+ * Fixed a bug where the RequestUrl of a LogRecord was not correctly HTML4 decoded.
+ * Made FileRange class and ListFilesAndDirectories method in the CloudFileDirectory class public. 
+
+2014.07 Version 0.2.0
+ * Added File Service support. The File Service and the associated SDK APIs are in preview. 
+ * Added CloudAnalyticsClient and related methods to simplify Storage Analytics logging and metrics use case scenarios.
+ * Fixed a bug where an empty file would be left over during the downloadToFile error case.
+ * Updated StorageErrorCodeStrings class. 
+ * Requests made using SAS credentials have the api-version query parameter appended to the URI.
+ * Fixed a null pointer exception that resulted when the first request was made with a blob created using the uri-only constructor (no sas creds appended).
