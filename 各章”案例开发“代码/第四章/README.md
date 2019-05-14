@@ -1,4 +1,2 @@
-# TIoTBook
-第x章“案例开发”部分代码说明：
-...
-...
+### 说明
+- 基于TinyLink开发的Antitheft应用案例  
