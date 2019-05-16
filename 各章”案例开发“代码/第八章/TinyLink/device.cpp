@@ -4,13 +4,13 @@ REQUIRE("Raspberry pi");
 TL_MQTT mqtt;   //声明MQTT客户端
 
 /*MQTT Broker参数*/  
-int port = 1883;  
-char serverName[] = "10.214.147.171";  
-char clientName [] = "username";  
-char pubTopic[] = "Grove_PIR@wt";  
-char subTopic[] = "Grove_PIR@rt";  
-char userName[] = "username";  
-char passWord[] = "password";  
+int port = xxxxx;  
+char serverName[] = "xxxxxx";  
+char clientName [] = "xxxxx";  
+char pubTopic[] = "xxxxx";  
+char subTopic[] = "xxxxx";  
+char userName[] = "xxxxx";  
+char passWord[] = "xxxxx";  
 int Time = 0;  
 int Count = 0;  
 char buf[100];// MQTT消息缓存
@@ -43,16 +43,16 @@ void setup(){
 
 /*第四部分*/
 void loop(){            //主循环计时30秒，检测到人移动次数达到10次则判定座位上有人  
-Time++;   
+	Time++;   
     if(TL_PIR.read())   //红外PIR检测  
         Count++;        //检测到周围有人移动，计数加1     
     if(Time==30){  
         if(Count>=10){ 
-            String data = "{\"pir_motion\":1}";     //检测到人移动次数达到10，PIR节点置位1  
+            String data = "{\"pir\":1}";     //检测到人移动次数达到10，PIR节点置位1  
             data.toCharArray( buf,100 );  
         }
         else{
-            String data = "{\"pir_motion\":0}";     //检测到人移动次数达到10，PIR节点置位1  
+            String data = "{\"pir\":0}";     //检测到人移动次数达到10，PIR节点置位1  
             data.toCharArray( buf,100 );  
         }  
         mqtt.publish(pubTopic, buf, strlen(buf));   //MQTT客户端向Topic发布消息  
